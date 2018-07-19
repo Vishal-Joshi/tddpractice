@@ -2,20 +2,19 @@ package com.example.tddpractice;
 
 public class MySet {
     private Integer[] store = new Integer[20];
-    private int currentIndex = 0;
+    private int currentIndex = -1;
 
     public boolean add(int element) {
         if (!contains(element)) {
-            store[currentIndex] = element;
-            ++currentIndex;
+            store[++currentIndex] = element;
             return true;
         }
         return false;
     }
 
     public boolean contains(int element) {
-        for (Integer i : store) {
-            if (i != null && i == element) {
+        for (int i = 0; i <= currentIndex; i++) {
+            if (store[i] == element) {
                 return true;
             }
         }
@@ -23,19 +22,15 @@ public class MySet {
     }
 
     public int size() {
-        int size = 0;
-        for (Integer i : store) {
-            if (i != null) {
-                ++size;
-            }
-        }
-        return size;
+        return currentIndex + 1;
     }
 
     public boolean remove(int element) {
         for (int i = 0; i <= currentIndex; i++) {
             if (store[i] == element) {
-                store[i] = null;
+                store[i] = store[currentIndex];
+                store[currentIndex] = null;
+                --currentIndex;
                 return true;
             }
         }
