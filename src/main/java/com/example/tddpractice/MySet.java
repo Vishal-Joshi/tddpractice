@@ -22,4 +22,13 @@ public class MySet {
         return false;
     }
 
+    public int size(){
+        int size = 0;
+        for (Integer i : store) {
+            if (i != null) {
+                ++size;
+            }
+        }
+        return size;
+    }
 }
