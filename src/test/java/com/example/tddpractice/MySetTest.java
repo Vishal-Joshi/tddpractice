@@ -98,5 +98,33 @@ public class MySetTest {
         assertThat(currentSize, is(equalTo(1)));
     }
 
+    @Test
+    public void testShouldVerifyThatRemovingAnElementReturnsTrueIfElementIsSuccessfullyRemoved(){
+        //given
+        MySet mySet = new MySet();
+
+        //when
+        mySet.add(1);
+        boolean isRemoved = mySet.remove(1);
+
+        //then
+        assertThat(isRemoved, is(true));
+        assertThat(mySet.size(), is(equalTo(0)));
+    }
+
+    @Test
+    public void testShouldVerifyThatAfterRemovingAnElementIfSameElementIsAddedItShouldBeSuccessful(){
+        //given
+        MySet mySet = new MySet();
+
+        //when
+        mySet.add(1);
+        mySet.remove(1);
+        boolean isAdded = mySet.add(1);
+
+        //then
+        assertThat(isAdded, is(true));
+        assertThat(mySet.size(), is(equalTo(1)));
+    }
 
 }

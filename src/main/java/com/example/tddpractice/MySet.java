@@ -22,7 +22,7 @@ public class MySet {
         return false;
     }
 
-    public int size(){
+    public int size() {
         int size = 0;
         for (Integer i : store) {
             if (i != null) {
@@ -30,5 +30,15 @@ public class MySet {
             }
         }
         return size;
+    }
+
+    public boolean remove(int element) {
+        for (int i = 0; i <= currentIndex; i++) {
+            if (store[i] == element) {
+                store[i] = null;
+                return true;
+            }
+        }
+        return true;
     }
 }
